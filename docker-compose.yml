@@ -1,0 +1,11 @@
+version: '3.9'
+services:
+# nginx services
+  web:
+    build: .
+    ports:
+      - "5003:5003"
+    volumes:
+      - .:/app
+    command: nginx -g 'daemon off;'
+  
