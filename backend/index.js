@@ -22,8 +22,8 @@ async function connect(){
 
 connect();
 
-app.listen(5090, ()=>{
-    console.log("server started on port 5090");
+app.listen(5003, ()=>{
+    console.log("server started on port 5003");
 });
 
 app.get('/injoziproj/sample_airbnb/GetNotes', (request, response)=>{
