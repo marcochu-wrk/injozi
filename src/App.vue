@@ -1,7 +1,37 @@
 <template>
+  <h1>{{ title }}</h1>
+  <p v-for="note in notes">
+    {{ note.description }}
+  </p>
   <router-view/>
 </template>
 
+<script>
+import axios from 'axios';
+const API_URL = "http://localhost:5003/";
+export default {
+  data(){
+    return{
+      title:"Injozi Test Application",
+      notes:[]
+    }
+  },
+  methods:{
+    async refreshData(){
+      console.log("Hit");
+      axios.get(API_URL+"injoziproj/sample_airbnb/GetNotes").then(
+        (response) =>{
+          this.notes=response.data;
+        }
+      )
+    }
+  },
+  mounted:function(){
+    this.refreshData();
+  }
+}
+</script>
+  
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
