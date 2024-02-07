@@ -18,9 +18,9 @@ export default {
   },
   methods:{
     async refreshData(){
-      console.log("Hit");
       axios.get(API_URL+"injoziproj/sample_airbnb/GetNotes").then(
         (response) =>{
+          console.log(response.data);
           this.notes=response.data;
         }
       )
