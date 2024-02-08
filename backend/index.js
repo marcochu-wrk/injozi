@@ -1,21 +1,23 @@
-var Express = require("express");
+var express = require("express");
 const mongoose = require('mongoose');
 var cors=require("cors");
-const multer=require("multer");
 const { ObjectId } = require("mongodb");
+var app = express();
 
-var app = Express();
+app.use(express.json());
 app.use(cors());
 
 var CONNECTION_STRING = "mongodb+srv://mcuser:injozi@cluster001.u3c91bi.mongodb.net/?retryWrites=true&w=majority";
 
-const noteSchema = new mongoose.Schema({
+const playerSchema
+ = new mongoose.Schema({
     id: ObjectId,
     name: String,
-    description: String
+    score: Number
 })
 
-const Note = mongoose.model('Note', noteSchema);
+const Player = mongoose.model('Player', playerSchema
+);
 
 async function connect(){
     try {
@@ -32,12 +34,26 @@ app.listen(5003, ()=>{
     console.log("server started on port 5003");
 });
 
-app.get('/injoziproj/sample_airbnb/GetNotes', async(req,res)=>{
+app.get('/injoziproj/reflex_timer', async(req,res)=>{
     try{
-        const notes = await Note.find();
-        res.json(notes);
+        const player = await Player.find();
+        res.json(player);
     }catch(error){
-        console.error("Error fetching notes:", error);
+        console.error("Error fetching data:", error);
         res.status(500).send(error.toString());
     }
+});
+
+app.post('/injoziproj/reflex_timer', async(req,res)=>{
+    try{
+        const newPlayer = new Player({
+            name: req.body.name,
+            score: req.body.score
+        });
+        await newPlayer.save();
+        res.status(201).json(newPlayer);
+    }catch(error){
+        console.error('Error adding new player:', error);
+        res.status(500).send(error.toString());
+    }   
 });
