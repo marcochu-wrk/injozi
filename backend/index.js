@@ -16,8 +16,7 @@ const playerSchema
     score: Number
 })
 
-const Player = mongoose.model('Player', playerSchema
-);
+const Player = mongoose.model('Player', playerSchema);
 
 async function connect(){
     try {

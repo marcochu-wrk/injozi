@@ -33,6 +33,11 @@ export default {
       )
     },
     async addPlayer(){
+      
+      if(!this.newPlayerName && !this.newPlayerScore){
+        alert("Missing fields");
+        return;
+      }
       try{
         const response = await axios.post(API_URL+"injoziproj/reflex_timer",{
           name: this.newPlayerName,
@@ -40,6 +45,8 @@ export default {
         });
         console.log('New Player Added', response.data);
         this.refreshData();
+        this.newPlayerName= '';
+        this.newPlayerScore=0;
       }catch(error){
         console.error('Error adding new player:', error);
       }
