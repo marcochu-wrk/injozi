@@ -1,5 +1,5 @@
 <template>
-  <h1>{{ title }}</h1>
+  <div class="header mt-4">{{ title }} </div>
   <p v-for= "player in players" :key="player.id">
     {{ player.name }}
   </p>
@@ -61,8 +61,6 @@ export default {
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #50427a;
 }
