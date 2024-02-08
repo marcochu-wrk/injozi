@@ -1,6 +1,6 @@
 <template>
   <div class="header mt-4">{{ title }} </div>
-  <p v-for= "player in players" :key="player.id">
+  <p class="score-text" v-for= "player in players" :key="player.id">
     {{ player.name }}
   </p>
   <div>
