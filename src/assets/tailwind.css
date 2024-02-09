@@ -5,10 +5,20 @@ body{
 .header{
     @apply font-Lato font-bold text-4xl text-white;
 }
+
+@tailwind components;
 .score-text{
     @apply font-Lato font-normal text-xl text-white;
 }
-@tailwind components;
+.addButton{
+    @apply bg-slate-50 rounded-lg ml-3 p-1;
+}
+.playerBody{
+    @apply text-black font-normal text-base font-Lato;
+}
+.inputFields{
+    @apply p-1 ml-1 text-xl;
+}
 
 @tailwind utilities;
 
