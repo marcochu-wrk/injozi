@@ -1,13 +1,15 @@
-var express = require("express");
+const express = require("express");
 const mongoose = require('mongoose');
-var cors=require("cors");
+const cors=require("cors");
 const { ObjectId } = require("mongodb");
+const config = require('../config.json');
 var app = express();
 
 app.use(express.json());
 app.use(cors());
 
-var CONNECTION_STRING = "mongodb+srv://mcuser:injozi@cluster001.u3c91bi.mongodb.net/?retryWrites=true&w=majority";
+var dbConfig = config.DbConnectionStrings;
+var CONNECTION_STRING = dbConfig.PlayerDatabaseConnection;
 
 const playerSchema
  = new mongoose.Schema({

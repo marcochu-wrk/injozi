@@ -1,0 +1,5 @@
+{
+    "DbConnectionStrings":{
+        "PlayerDatabaseConnection": "mongodb+srv://mcuser:injozi@cluster001.u3c91bi.mongodb.net/?retryWrites=true&w=majority"
+    }
+}

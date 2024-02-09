@@ -2,12 +2,7 @@
 
 ## Project setup
 ```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
+Docker Compose Up --Build
 ```
 
 ### Compiles and minifies for production
