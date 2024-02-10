@@ -3,7 +3,7 @@ body{
     @apply bg-gray-700
 }
 .header{
-    @apply font-Lato font-bold text-4xl text-white;
+    @apply font-Lato font-bold text-4xl text-white text-center;
 }
 
 @tailwind components;
@@ -14,10 +14,10 @@ body{
     @apply bg-slate-50 rounded-lg ml-3 p-1;
 }
 .playerBody{
-    @apply text-black font-normal text-base font-Lato;
+    @apply text-black font-normal text-base text-center font-Lato;
 }
 .inputFields{
-    @apply p-1 ml-1 text-xl;
+    @apply p-1 ml-1 text-xl rounded-lg;
 }
 
 @tailwind utilities;

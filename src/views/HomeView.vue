@@ -2,6 +2,7 @@
   <div class="header mt-7">{{ title }}</div>
   <p class="score-text" v-for= "player in players" :key="player.id">
     {{ player.name }}
+    {{ player.score }}
   </p>
   <div class="playerBody mt-5">
     <input class="inputFields" v-model="newPlayerName" placeholder="Player Name">
@@ -12,22 +13,22 @@
 
 <script>
 // @ is an alias to /src
-import Home from '@/components/Home.vue'
+import Home from '@/components/Home.vue';
 import axios from 'axios';
 const API_URL = "http://localhost:5003/";
 export default {
   components:{
-    Home
+    Home,
   },
   props:{
-    
+
   },
   data(){
     return{
       title:"Test Application",
       players:[],
       newPlayerName:'',
-      newPlayerScore:0
+      newPlayerScore:0,
     }
   },
   methods:{
@@ -40,7 +41,6 @@ export default {
       )
     },
     async addPlayer(){
-      
       if(!this.newPlayerName && !this.newPlayerScore){
         alert("Missing fields");
         return;
@@ -59,8 +59,14 @@ export default {
       }
     }
   },
+  computed: {
+    sortedPlayers() {
+      return this.players.slice().sort((a, b) => b.score - a.score);
+    }
+  },
   mounted:function(){
     this.refreshData();
   }
 }
 </script>
+
