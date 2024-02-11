@@ -20,6 +20,7 @@ const playerSchema
 
 const Player = mongoose.model('Player', playerSchema);
 
+//Connecting to mongodb
 async function connect(){
     try {
         await mongoose.connect(CONNECTION_STRING);
@@ -31,10 +32,12 @@ async function connect(){
 }
 connect();
 
+//Listening to backend on port 5003
 app.listen(5003, ()=>{
     console.log("server started on port 5003");
 });
 
+//Getting request from player collection
 app.get('/injoziproj/reflex_timer', async(req,res)=>{
     try{
         const player = await Player.find();
@@ -45,6 +48,7 @@ app.get('/injoziproj/reflex_timer', async(req,res)=>{
     }
 });
 
+//Posting to player collection
 app.post('/injoziproj/reflex_timer', async(req,res)=>{
     try{
         const newPlayer = new Player({

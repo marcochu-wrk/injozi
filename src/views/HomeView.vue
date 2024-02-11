@@ -35,6 +35,7 @@ export default {
     }
   },
   methods:{
+    //Refreshing player data array
     async refreshData(){
       axios.get(API_URL+"injoziproj/reflex_timer").then(
         (response) =>{
@@ -43,6 +44,7 @@ export default {
         }
       )
     },
+    //Adding player to db
     async addPlayer(){
       if(!this.newPlayerName && !this.newPlayerScore){
         alert("Missing fields");
@@ -62,6 +64,7 @@ export default {
       }
     }
   },
+  //Sorting player by score
   computed: {
     sortedPlayers() {
       return this.players.slice().sort((a, b) => b.score - a.score);
